@@ -4,11 +4,14 @@
 {
     "name": "Ai Oca Bridge Helpdesk Mgmt",
     "summary": """Integrate AI Bridge with Helpdesk Management""",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.1.0",
     "license": "AGPL-3",
     "author": "Dixmit,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/ai",
     "depends": ["ai_oca_bridge", "helpdesk_mgmt"],
-    "data": [],
+    "data": [
+        "data/ai_action_data.xml",
+        "data/ai_bridge_data.xml",
+    ],
     "demo": [],
 }
