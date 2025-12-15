@@ -35,6 +35,12 @@
                                 attrs="{'required': [('model_required', '=', 'True')]}"
                             />
                             <field name="model_required" invisible="1" />
+                            <field
+                                name="trigger_field_ids"
+                                widget="many2many_tags"
+                                domain="[('model_id', '=', model_id)]"
+                                attrs="{'invisible': [('usage', '!=', 'ai_thread_write')]}"
+                            />
                             <field name="description" />
                         </group>
                         <group>
