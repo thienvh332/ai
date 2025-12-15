@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ai_bridge_helpdesk_ticket_spam_identify" model="ai.bridge">
+        <field name="name">Helpdesk Ticket Spam Identification</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket" />
+        <field name="usage">ai_thread_create</field>
+        <field name="result_kind">async</field>
+        <field name="result_type">server_action</field>
+        <field name="field_ids"
+            eval="[(6, 0, [ref('helpdesk_mgmt.field_helpdesk_ticket__id'), ref('helpdesk_mgmt.field_helpdesk_ticket__display_name'), ref('helpdesk_mgmt.field_helpdesk_ticket__description')])]" />
+    </record>
+</odoo>
