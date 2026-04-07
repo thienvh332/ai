@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- # Copyright 2026 Trobz
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="ai_bridge_form_view_scheduler">
+        <field name="model">ai.bridge</field>
+        <field name="inherit_id" ref="ai_oca_bridge.ai_bridge_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Scheduler" name="scheduler">
+                    <group>
+                        <field name="is_scheduled" />
+                        <field
+                            name="schedule_interval_number"
+                            invisible="not is_scheduled"
+                        />
+                        <field
+                            name="schedule_interval_type"
+                            invisible="not is_scheduled"
+                        />
+                        <field name="schedule_nextcall" invisible="not is_scheduled" />
+                        <field
+                            name="cron_id"
+                            readonly="1"
+                            invisible="not is_scheduled"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
