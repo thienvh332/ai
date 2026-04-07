@@ -2,7 +2,6 @@
 <!-- # Copyright 2026 Trobz
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record model="ir.ui.view" id="ai_bridge_form_view_scheduler">
         <field name="model">ai.bridge</field>
         <field name="inherit_id" ref="ai_oca_bridge.ai_bridge_form_view" />
@@ -33,5 +32,4 @@
             </xpath>
         </field>
     </record>
-
 </odoo>

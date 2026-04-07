@@ -6,7 +6,6 @@ from odoo.tools.safe_eval import safe_eval
 
 
 class AiBridge(models.Model):
-
     _inherit = "ai.bridge"
 
     is_scheduled = fields.Boolean(
@@ -101,7 +100,7 @@ class AiBridge(models.Model):
         nextcalls = [vals.pop("schedule_nextcall", None) for vals in vals_list]
         records = super().create(vals_list)
         records.filtered("is_scheduled")._sync_cron()
-        for record, nextcall in zip(records, nextcalls):
+        for record, nextcall in zip(records, nextcalls, strict=False):
             if nextcall and record.cron_id:
                 record.cron_id.sudo().write({"nextcall": nextcall})
         return records
