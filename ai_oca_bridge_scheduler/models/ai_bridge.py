@@ -46,7 +46,7 @@ class AiBridge(models.Model):
     def _get_cron_vals(self):
         self.ensure_one()
         return {
-            "name": _("AI Bridge: %s") % self.name,
+            "name": _("AI Bridge: %s", self.name,)
             "model_id": self.env["ir.model"]._get_id("ai.bridge"),
             "state": "code",
             "code": "model.browse(%s)._run_schedule()" % self.id,

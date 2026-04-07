@@ -4,7 +4,7 @@
 {
     "name": "AI OCA Bridge Scheduler",
     "summary": """Schedule automatic execution of AI bridges""",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "license": "AGPL-3",
     "author": "Trobz,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/ai",

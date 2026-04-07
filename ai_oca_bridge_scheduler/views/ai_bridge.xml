@@ -12,20 +12,17 @@
                         <field name="is_scheduled" />
                         <field
                             name="schedule_interval_number"
-                            attrs="{'invisible': [('is_scheduled', '=', False)]}"
+                            invisible="not is_scheduled"
                         />
                         <field
                             name="schedule_interval_type"
-                            attrs="{'invisible': [('is_scheduled', '=', False)]}"
+                            invisible="not is_scheduled"
                         />
-                        <field
-                            name="schedule_nextcall"
-                            attrs="{'invisible': [('is_scheduled', '=', False)]}"
-                        />
+                        <field name="schedule_nextcall" invisible="not is_scheduled" />
                         <field
                             name="cron_id"
                             readonly="1"
-                            attrs="{'invisible': [('is_scheduled', '=', False)]}"
+                            invisible="not is_scheduled"
                         />
                     </group>
                 </page>
