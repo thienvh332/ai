@@ -92,7 +92,7 @@ class TestScheduler(TransactionCase):
         )
 
     def test_scheduler_combined_thread(self):
-        """Bridge with usage='thread' + is_scheduled=True: both features work independently."""
+        """Bridge with usage='thread' + is_scheduled=True: both features work."""
         bridge = self.env["ai.bridge"].create(
             {
                 "name": "Thread + Scheduled Bridge",

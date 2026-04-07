@@ -1,7 +1,7 @@
 # Copyright 2026 Trobz
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.tools.safe_eval import safe_eval
 
 
@@ -46,15 +46,13 @@ class AiBridge(models.Model):
     def _get_cron_vals(self):
         self.ensure_one()
         return {
-            "name": _("AI Bridge: %s", self.name,)
+            "name": self.env._("AI Bridge: %s", self.name),
             "model_id": self.env["ir.model"]._get_id("ai.bridge"),
             "state": "code",
-            "code": "model.browse(%s)._run_schedule()" % self.id,
+            "code": f"model.browse({self.id})._run_schedule()",
             "active": self.active,
             "interval_number": self.schedule_interval_number or 1,
             "interval_type": self.schedule_interval_type or "weeks",
-            "numbercall": -1,
-            "doall": False,
         }
 
     def _sync_cron(self):
@@ -70,10 +68,7 @@ class AiBridge(models.Model):
                         "UPDATE ai_bridge SET cron_id = %s WHERE id = %s",
                         (cron.id, bridge.id),
                     )
-                    bridge.invalidate_cache(
-                        ["cron_id", "schedule_nextcall"],
-                        [bridge.id],
-                    )
+                    bridge.invalidate_recordset(["cron_id", "schedule_nextcall"])
             else:
                 if bridge.cron_id:
                     bridge.cron_id.sudo().unlink()
@@ -81,10 +76,7 @@ class AiBridge(models.Model):
                         "UPDATE ai_bridge SET cron_id = NULL WHERE id = %s",
                         (bridge.id,),
                     )
-                    bridge.invalidate_cache(
-                        ["cron_id", "schedule_nextcall"],
-                        [bridge.id],
-                    )
+                    bridge.invalidate_recordset(["cron_id", "schedule_nextcall"])
 
     def _run_schedule(self):
         self.ensure_one()
